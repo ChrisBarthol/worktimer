@@ -1,3 +1,25 @@
 <% provide(:title, @customer.company) %>
 <h1><%= @customer.company %></h1>
-<p>Customer</p>
+<% if @currentprojects.any? %>
+	<h3> Current Projects: </h3>
+	<%= render @currentprojects %>
+<% end %>
+<h3> Add a Project </h3>
+<div><%= render 'shared/project_form' %></div>
+
+<h3> Location Info: </h3>
+<p>Address1: <em><%= @customer.address1 %></em></p>
+<p>Address2: <em><%= @customer.address2 %></em></p>
+<p>Address3: <em><%= @customer.address3 %></em></p>
+<p>City: <em><%= @customer.city %></em></p>
+<p>State: <em><% @customer.state %></em></p>
+<p>Zip: <em><% @customer.zip %></em></p>
+
+<h3> Contact Info </h3>
+<p>Phone1: <em><%= @customer.phone1 %></em></p>
+<p>Phone2: <em><%= @customer.phone2 %></em></p>
+<p>Fax1: <em><%= @customer.fax1 %></em></p>
+<p>Fax2: <em><%= @customer.fax2 %></em></p>
+<p>Email: <em><%= @customer.email %></em></p>
+<p>Webiste: 
+	<% if @customer.website.present? %><%= link_to @customer.website %><% end %></p>

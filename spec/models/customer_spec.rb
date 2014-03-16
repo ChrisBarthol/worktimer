@@ -25,11 +25,35 @@ describe Customer do
   it { should respond_to(:fax2) }
   it { should respond_to(:email) }
   it { should respond_to(:website) }
+  it { should respond_to(:projects) }
 
   it { should be_valid }
 
   describe "when company is not present" do
     before { @customer.company = nil }
     it { should_not be_valid }
+  end
+
+  describe "project associations" do
+    before { @customer.save }
+    let!(:older_project) do
+      FactoryGirl.create(:project, customer: @customer, created_at: 1.day.ago)
+    end
+    let!(:newer_project) do
+      FactoryGirl.create(:project, customer: @customer, created_at: 1.hour.ago)
+    end
+
+    it "should have the right projects in the right order" do
+      expect(@customer.projects.to_a).to eq [newer_project, older_project]
+    end
+
+    it "should destroy associated projects" do
+    	projects = @customer.projects.to_a
+    	@customer.destroy
+    	expect(projects).not_to be_empty
+    	projects.each do |project|
+    		expect(Project.where(id: project.id)).to be_empty
+    	end
+    end
   end
 end

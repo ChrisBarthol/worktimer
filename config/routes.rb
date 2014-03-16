@@ -3,6 +3,7 @@ Worktimer::Application.routes.draw do
   resources :customers do
     collection { post :import }
   end
+  resources :projects
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

@@ -3,6 +3,8 @@ class Customer < ActiveRecord::Base
 	validates :company, presence: true
 	default_scope -> { order('company DESC') }
 
+	has_many :projects, dependent: :destroy
+
 	def self.to_csv(options={})
 		CSV.generate(options) do |csv|
 			csv << column_names

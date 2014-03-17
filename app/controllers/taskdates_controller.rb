@@ -5,6 +5,9 @@ class TaskdatesController < ApplicationController
     @date = @taskdate.thedate.to_formatted_s(:long_ordinal)
   end
 
+  def date
+  end
+
   def new
     @taskdate = Taskdate.new
     3.times { @taskdate.tasks.build }
@@ -32,13 +35,15 @@ class TaskdatesController < ApplicationController
   end
 
   def index
-  	@taskdates = Taskdate.all
+  	@taskdates = Taskdate.where(user_id: current_user.id)
     @taskdates_by_date = @taskdates.group_by(&:thedate)
     @date = params[:thedate] ? Date.parse(params[:date]) : Date.today
-    
+    @tasks = Task.where(user_id: current_user.id)
   end
 
-
+  def report
+    @day = Task.where(dtstart: Date.Today)
+  end
 
   def destroy
   	Task.find(params[:id]).destroy
@@ -46,9 +51,23 @@ class TaskdatesController < ApplicationController
   	redirect_to tasks_url
   end
 
+  def edit
+    @taskdate = Taskdate.find(params[:id])
+  end
+
+  def update
+    @taskdate = Taskdate.find(params[:id])
+    @tasks = @taskdate.tasks
+    if @taskdate.update_attributes(task_params)
+      redirect_to @taskdate, :flash => {notice: "Tasks Updated" }
+    else
+      render 'edit'
+    end
+  end
+
   private
 
 	    def task_params
-	      params.require(:taskdate).permit(:thedate, tasks_attributes: [:projectname, :companyname, :dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id,:created_at, :updated_at])
+	      params.require(:taskdate).permit(:id,:thedate, tasks_attributes: [:id,:projectname, :companyname, :dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id,:created_at, :updated_at])
 	    end
 end

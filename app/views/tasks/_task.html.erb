@@ -1,12 +1,34 @@
+<div class="clearfix visible-xs"></div>
 <li>
- 
-  <%= task.projectname %>
-  <%= task.dtstart %>
-  <%= task.dtstop %>
-  <%= task.totaltime %>
-  <%= task.description %>
-  <%= task.customer_id %>
-  <%= task.project_id %>
-  <%= task.companyname %>
+		<span class="span2">
+			<%= task.companyname %>
+		</span>
+		<span class="span2">
+			<%= task.projectname %>
+		</span>
+		<span class="span2">
+			<%= task.description %>
+		</span>
+		<span class="span1">
+			<%= task.user_id %>
+		</span>
+		<span class="span1">
+			<%= task.totaltime.strftime("%H:%M") %>
+		</span>
+		<span class="span1">
+			<%= task.dtstart %>
+		</span>
+		<span class="span1">
+			<%= task.dtstop %>
+		</span>
+		  | <%= link_to "delete", task, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  | <%= link_to "edit", edit_taskdate_path(task.taskdate_id) %>
+ </li>
 
-</li>
+<div class="clearfix visible-xs"></div>
+<div class="border"></div>
+
+
+
+

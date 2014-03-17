@@ -1,5 +1,7 @@
 <li>
  
-  <%= link_to taskdate.thedate %>
+  <%= link_to task.projectname %>
+  | <%= link_to "delete", task, method: :delete,
+                                  data: { confirm: "You sure?" } %>
 
 </li>

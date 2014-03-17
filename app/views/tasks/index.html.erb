@@ -2,3 +2,82 @@
 	Download:
 	<%= link_to "CSV", tasks_path(format: "csv") %>
 </p>
+	<span class="span14">
+		<span class="span2">
+			Company
+		</span>
+		<span class="span2">
+			Project Name
+		</span>
+		<span class="span2">
+			Description
+		</span>
+		<span class="span1">
+			User
+		</span>
+		<span class="span1">
+			Total Time
+		</span>
+		<span class="span1">
+			Start Time
+		</span>
+		<span class="span1">
+			Stop Time
+		</span>
+	</span>
+	<div class="clearfix visible-xs"></div>
+	<h3>Day</h3>
+<%= render partial: "task", collection: @day, as: :task %>
+<div class="clearfix visible-xs"></div>
+<h3>Week</h3>
+<span class="span14">
+		<span class="span2">
+			Company
+		</span>
+		<span class="span2">
+			Project Name
+		</span>
+		<span class="span2">
+			Description
+		</span>
+		<span class="span1">
+			User
+		</span>
+		<span class="span1">
+			Total Time
+		</span>
+		<span class="span1">
+			Start Time
+		</span>
+		<span class="span1">
+			Stop Time
+		</span>
+	</span>
+<%= render partial: "task", collection: @week, as: :task %>
+<div class="clearfix visible-xs"></div>
+<h3>Month</h3>
+<span class="span14">
+		<span class="span2">
+			Company
+		</span>
+		<span class="span2">
+			Project Name
+		</span>
+		<span class="span2">
+			Description
+		</span>
+		<span class="span1">
+			User
+		</span>
+		<span class="span1">
+			Total Time
+		</span>
+		<span class="span1">
+			Start Time
+		</span>
+		<span class="span1">
+			Stop Time
+		</span>
+	</span>
+<%= render partial: "task", collection: @month_by_time, as: :task %>
+

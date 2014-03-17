@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :signed_in_user
 	require 'csv'
 
   def show

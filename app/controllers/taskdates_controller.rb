@@ -1,4 +1,5 @@
 class TaskdatesController < ApplicationController
+  before_action :signed_in_user
 
   def show
     @taskdate = Taskdate.find(params[:id])

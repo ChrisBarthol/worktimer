@@ -1,0 +1,29 @@
+<% provide(:title, 'Tasks') %>
+<h1>Tasks</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@task1) do |f| %>
+      <%= render 'taskfields', f: f %>
+      <%= f.submit "Add task", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@task2) do |f| %>
+      <%= render 'taskfields', f: f %>
+      <%= f.submit "Add task", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@task3) do |f| %>
+      <%= render 'taskfields', f: f %>
+      <%= f.submit "Add task", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -21,4 +21,12 @@ FactoryGirl.define do
   	description "A good description"
   	customer
   end
+
+  factory :task do
+  	user
+  	project_id 1
+  	customer_id 1
+  	totaltime "24:00:00"
+  	description "A description"
+  end
 end

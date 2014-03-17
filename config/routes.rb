@@ -4,6 +4,7 @@ Worktimer::Application.routes.draw do
     collection { post :import }
   end
   resources :projects
+  resources :taskdates
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

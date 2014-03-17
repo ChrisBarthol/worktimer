@@ -23,3 +23,5 @@
 <p>Email: <em><%= @customer.email %></em></p>
 <p>Webiste: 
 	<% if @customer.website.present? %><%= link_to @customer.website %><% end %></p>
+
+	<li><%= link_to "Update Customer", edit_customer_path(@customer) %></li>

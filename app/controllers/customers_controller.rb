@@ -36,6 +36,20 @@ class CustomersController < ApplicationController
 	redirect_to customers_url
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+      if @customer.update_attributes(customer_params)
+        flash[:success] = "Customer updated"
+        redirect_to @customer
+      else
+        render 'edit'
+      end
+  end
+
   private
 
 	    def customer_params

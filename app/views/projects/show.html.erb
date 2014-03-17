@@ -1,2 +1,11 @@
 <% provide(:title, @project.name) %>
 <h1><%= @project.name %></h1>
+<h2><%= @project.description %></h2>
+
+<h3> Company </h3>
+<p><%= render @customer %><p>
+
+<h3> Project Tasks </h3>
+<p><%= render @task %><p>
+
+<li><%= link_to "Update Project", edit_project_path(@project) %></li>

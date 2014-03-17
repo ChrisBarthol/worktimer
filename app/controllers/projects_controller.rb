@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @customer = Customer.where(id: @project.id)
+    @task = Task.where(project_id: @project.id)
   end
 
   def new
@@ -27,6 +29,20 @@ class ProjectsController < ApplicationController
     Project.find(params[:id]).destroy
     flash[:success] = "Project deleted."
     redirect_to projects_url
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+      if @project.update_attributes(project_params)
+        flash[:success] = "Project updated"
+        redirect_to @project
+      else
+        render 'edit'
+      end
   end
 
   private

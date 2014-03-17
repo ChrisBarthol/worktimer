@@ -18,6 +18,8 @@ class TaskdatesController < ApplicationController
       @project = Project.where(name: tasks.projectname)
       tasks.project_id = @project.first.id
       tasks.customer_id = @project.first.customer_id
+      @customer = Customer.where(id: tasks.customer_id)
+      tasks.companyname = @customer.first.company
       tasks.user_id = current_user.id
     end
 	    if @task.save
@@ -29,7 +31,7 @@ class TaskdatesController < ApplicationController
   end
 
   def index
-  	@taskdates = Taskdate.paginate(page: params[:page])
+  	@taskdates = Task.paginate(page: params[:page])
   end
 
 
@@ -43,6 +45,6 @@ class TaskdatesController < ApplicationController
   private
 
 	    def task_params
-	      params.require(:taskdate).permit(:thedate, tasks_attributes: [:projectname,:dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id,:created_at, :updated_at])
+	      params.require(:taskdate).permit(:thedate, tasks_attributes: [:projectname, :companyname, :dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id,:created_at, :updated_at])
 	    end
 end

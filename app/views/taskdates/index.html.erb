@@ -1,0 +1,10 @@
+<% provide(:title, 'Your Past Tasks') %>
+<h1>Your Past Tasks</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @taskdates %>
+</ul>
+
+<%= will_paginate %>

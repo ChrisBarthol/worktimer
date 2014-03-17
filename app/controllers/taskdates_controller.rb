@@ -1,7 +1,8 @@
 class TaskdatesController < ApplicationController
 
   def show
-    @task = Taskdate.find(params[:id])
+    @taskdate = Taskdate.find(params[:id])
+    @date = Date.today.to_formatted_s(:long_ordinal)
   end
 
   def new
@@ -12,6 +13,13 @@ class TaskdatesController < ApplicationController
 
   def create
   	@task = Taskdate.new(task_params)
+    @task.user_id = current_user.id
+    for tasks in @task.tasks
+      @project = Project.where(name: tasks.projectname)
+      tasks.project_id = @project.first.id
+      tasks.customer_id = @project.first.customer_id
+      tasks.user_id = current_user.id
+    end
 	    if @task.save
 	      flash[:success] = "Task Saved!"
 	      redirect_to @task
@@ -21,7 +29,7 @@ class TaskdatesController < ApplicationController
   end
 
   def index
-  	@tasks = Task.paginate(page: params[:page])
+  	@taskdates = Taskdate.paginate(page: params[:page])
   end
 
 
@@ -35,6 +43,6 @@ class TaskdatesController < ApplicationController
   private
 
 	    def task_params
-	      params.require(:taskdate).permit(:dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id)
+	      params.require(:taskdate).permit(:thedate, tasks_attributes: [:projectname,:dtstart, :dtstop, :totaltime, :description, :user_id, :project_id, :customer_id, :taskdate_id,:created_at, :updated_at])
 	    end
 end

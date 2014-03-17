@@ -4,19 +4,25 @@
 
 <%= f.fields_for :tasks do |builder| %>
 	<span class="span2">
-	<%= builder.label :dtstart %>
-	<%= builder.text_field :dtstart %>
-</span>
-<span class="span2">
-	<%= builder.label :dtstop %>
-	<%= builder.text_field :dtstop %>
-</span>
-<span class="span2">
-	<%= builder.label :totaltime %>
-	<%= builder.text_field :totaltime %>
+		<%= builder.label :projectname, "Project Name" %>
+		<%= builder.text_field :projectname %>
 	</span>
-<span class="span2">
-	<%= builder.label :project_id %>
-	<%= builder.text_field :project_id %>
+	<span class="span2">
+		<%= builder.label :dtstart, "Start Time" %>
+		<%= builder.text_field :dtstart %>
 	</span>
+	<span class="span2">
+		<%= builder.label :dtstop, "Stop Time" %>
+		<%= builder.text_field :dtstop %>
+	</span>
+	<span class="span2">
+		<%= builder.label :totaltime, "Total Time" %>
+		<%= builder.text_field :totaltime %>
+	</span>
+	<div class="clearfix visible-xs"></div>
+	<span class="span8">
+		<%= builder.label :description, "Task Description" %>
+		<%= builder.text_field :description %>
+	</span>
+
 <% end %>

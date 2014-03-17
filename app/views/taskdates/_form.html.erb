@@ -1,28 +1,33 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<div><%= hidden_field_tag :thedate, Date.today %></div>
+
 
 <%= f.fields_for :tasks do |builder| %>
-	<span class="span2">
-		<%= builder.label :projectname, "Project Name" %>
-		<%= builder.text_field :projectname %>
+<div class = "taskfields">
+	<span class="span2 project">
+		<%= builder.label :project_id, "Project Name" %>
+		<%= builder.collection_select :project_id, Project.order(:name), :id, :name, include_blank: true %>
 	</span>
-	<span class="span2">
+	<span class="span2 time">
 		<%= builder.label :dtstart, "Start Time" %>
 		<%= builder.text_field :dtstart %>
 	</span>
-	<span class="span2">
+	<span class="span2 time">
 		<%= builder.label :dtstop, "Stop Time" %>
 		<%= builder.text_field :dtstop %>
 	</span>
-	<span class="span2">
+	<span class="span2 totaltime">
 		<%= builder.label :totaltime, "Total Time" %>
 		<%= builder.text_field :totaltime %>
 	</span>
+
 	<div class="clearfix visible-xs"></div>
 	<span class="span8">
 		<%= builder.label :description, "Task Description" %>
 		<%= builder.text_field :description %>
 	</span>
-
+	</div>
+	<div class="border"></div>
 <% end %>
+
+

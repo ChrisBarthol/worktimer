@@ -3,13 +3,59 @@
 
 
 <div class="row">
-  <div class="span10 ">
+  <div class="span9">
 
     <%= form_for(@taskdate) do |f| %>
       <%= render 'form', f: f %>
       <div class="clearfix visible-xs"></div>
+    
       <%= f.submit "Finish tasks", class: "btn btn-large btn-primary" %>
     <% end %>
+  </div>
+  <div class="span2 pull-left">
+  	<span class="span4 timer">
+    	<b>Task 1 Timer:</b>
+		<script src="stopwatch.js" type="text/javascript"></script> 
+		<span id="watchdisplay">00:00:00</span> 
+		<input onclick="w.start()" type="button" value="Start"> <input onclick="w.stop()" type="button" value="Stop"> 
+		<script type="text/javascript">// <![CDATA[
+	   		function updatedisplay(watch) {
+				document.getElementById('watchdisplay').innerHTML = watch.toString() + "." + parseInt(watch.getElapsed().milliseconds/100);
+			}
+			var w = new Stopwatch(updatedisplay, 50);
+		// ]]&gt;</script>
+	</span>
+	<div class="clearfix visible-xs"></div>
+
+	<span class="span4 timer">
+    	<b>Task 2 Timer:</b>
+		<script src="stopwatch.js" type="text/javascript"></script> 
+		<span id="watchdisplay2">00:00:00</span> 
+		<input onclick="y.start()" type="button" value="Start"> <input onclick="y.stop()" type="button" value="Stop"> 
+		<script type="text/javascript">// <![CDATA[
+	   		function updatedisplay(watch) {
+				document.getElementById('watchdisplay2').innerHTML = watch.toString() + "." + parseInt(watch.getElapsed().milliseconds/100);
+			}
+			var y = new Stopwatch(updatedisplay, 50);
+		// ]]&gt;</script>
+	</span>
+	<div class="clearfix visible-xs"></div>
+
+	<span class="span4 timer">
+    	<b>Task 3 Timer:</b>
+		<script src="stopwatch.js" type="text/javascript"></script> 
+		<span id="watchdisplay3">00:00:00</span> 
+		<input onclick="x.start()" type="button" value="Start"> <input onclick="x.stop()" type="button" value="Stop"> 
+		<script type="text/javascript">// <![CDATA[
+	   		function updatedisplay(watch) {
+				document.getElementById('watchdisplay3').innerHTML = watch.toString() + "." + parseInt(watch.getElapsed().milliseconds/100);
+			}
+			var x = new Stopwatch(updatedisplay, 50);
+
+			var z = x+w+y
+		// ]]&gt;</script>
+	</span>
+	<div class="clearfix visible-xs"></div>
   </div>
 </div>
 

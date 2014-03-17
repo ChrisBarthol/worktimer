@@ -2,7 +2,7 @@ class TaskdatesController < ApplicationController
 
   def show
     @taskdate = Taskdate.find(params[:id])
-    @date = Date.today.to_formatted_s(:long_ordinal)
+    @date = @taskdate.thedate.to_formatted_s(:long_ordinal)
   end
 
   def new
@@ -15,12 +15,13 @@ class TaskdatesController < ApplicationController
   	@task = Taskdate.new(task_params)
     @task.user_id = current_user.id
     for tasks in @task.tasks
-      @project = Project.where(name: tasks.projectname)
-      tasks.project_id = @project.first.id
+      @project = Project.where(id: tasks.project_id)
+      tasks.project_name = @project.first.name
       tasks.customer_id = @project.first.customer_id
       @customer = Customer.where(id: tasks.customer_id)
       tasks.companyname = @customer.first.company
       tasks.user_id = current_user.id
+      @task.thedate = tasks.dtstart
     end
 	    if @task.save
 	      flash[:success] = "Task Saved!"
@@ -31,7 +32,10 @@ class TaskdatesController < ApplicationController
   end
 
   def index
-  	@taskdates = Task.paginate(page: params[:page])
+  	@taskdates = Taskdate.all
+    @taskdates_by_date = @taskdates.group_by(&:thedate)
+    @date = params[:thedate] ? Date.parse(params[:date]) : Date.today
+    
   end
 
 

@@ -1,10 +1,20 @@
-<% provide(:title, 'Your Past Tasks') %>
-<h1>Your Past Tasks</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @taskdates %>
-</ul>
-
-<%= will_paginate %>
+<div id="taskdates">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if @taskdates_by_date[date] %>
+      <ul>
+        <% @taskdates_by_date[date].each do |taskdate| %>
+          <li><%= link_to taskdate.thedate, taskdate %></li>
+        <% end %>
+        <% if @taskdates_by_date[date].blank? %>
+        <li><%= link_to new_taskdate_path %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

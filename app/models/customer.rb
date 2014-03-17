@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
 	before_save { self.company = company.downcase }
 	validates :company, presence: true
-	default_scope -> { order('company DESC') }
+	default_scope -> { order('company ASC') }
 
 	has_many :projects, dependent: :destroy
 

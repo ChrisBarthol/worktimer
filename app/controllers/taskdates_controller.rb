@@ -29,7 +29,7 @@ class TaskdatesController < ApplicationController
     end
 	    if @task.save
 	      flash[:success] = "Task Saved!"
-	      redirect_to @task
+	      redirect_to taskdates_path
 	    else
 	      render 'new'
 	    end

@@ -11,3 +11,4 @@ jQuery ->
   	dateFormat: 'yy-mm-dd'
   $('#taskdate_tasks_attributes_2_dtstop').datepicker
   	dateFormat: 'yy-mm-dd'
+

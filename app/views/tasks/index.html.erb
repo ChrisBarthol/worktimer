@@ -2,7 +2,9 @@
 	Download:
 	<%= link_to "CSV", tasks_path(format: "csv") %>
 </p>
-	<span class="span14">
+<h3>Day</h3>
+<div class="clearfix visible-xs"></div>
+	<b><span class="span14">
 		<span class="span2">
 			Company
 		</span>
@@ -23,15 +25,15 @@
 		</span>
 		<span class="span1">
 			Stop Time
-		</span>
+		</span></b>
 	</span>
 	<div class="clearfix visible-xs"></div>
-	<h3>Day</h3>
+	
 <%= render partial: "task", collection: @day, as: :task %>
 <div class="clearfix visible-xs"></div>
 <h3>Week</h3>
 <span class="span14">
-		<span class="span2">
+		<b><span class="span2">
 			Company
 		</span>
 		<span class="span2">
@@ -51,13 +53,13 @@
 		</span>
 		<span class="span1">
 			Stop Time
-		</span>
+		</span></b>
 	</span>
 <%= render partial: "task", collection: @week, as: :task %>
 <div class="clearfix visible-xs"></div>
 <h3>Month</h3>
 <span class="span14">
-		<span class="span2">
+		<b><span class="span2">
 			Company
 		</span>
 		<span class="span2">
@@ -77,7 +79,7 @@
 		</span>
 		<span class="span1">
 			Stop Time
-		</span>
+		</span></b>
 	</span>
-<%= render partial: "task", collection: @month_by_time, as: :task %>
+<%= render partial: "task", collection: @month, as: :task %>
 

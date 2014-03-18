@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @customer = Customer.where(id: @project.id)
+    @customer = Customer.where(id: @project.customer_id)
     @task = Task.where(project_id: @project.id)
   end
 

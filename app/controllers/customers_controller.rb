@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :signed_in_user
+  before_action :admin_user,     only: :destroy
 	require 'csv'
 
   def show

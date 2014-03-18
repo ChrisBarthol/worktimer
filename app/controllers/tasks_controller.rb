@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 	before_action :signed_in_user
+  before_action :admin_user,     only: :index
 
   def index
     @tasks = Task.order(:totaltime)

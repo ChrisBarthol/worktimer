@@ -2,6 +2,8 @@
 	Download:
 	<%= link_to "CSV", tasks_path(format: "csv") %>
 </p>
+
+<!--               Tasks for one day             -->
 <h3>Day</h3>
 <div class="clearfix visible-xs"></div>
 	<b><span class="span14">
@@ -28,7 +30,8 @@
 		</span></b>
 	</span>
 	<div class="clearfix visible-xs"></div>
-	
+
+<!--               Tasks for one week            -->
 <%= render partial: "task", collection: @day, as: :task %>
 <div class="clearfix visible-xs"></div>
 <h3>Week</h3>
@@ -55,6 +58,8 @@
 			Stop Time
 		</span></b>
 	</span>
+
+	<!--               Tasks for one month             -->
 <%= render partial: "task", collection: @week, as: :task %>
 <div class="clearfix visible-xs"></div>
 <h3>Month</h3>

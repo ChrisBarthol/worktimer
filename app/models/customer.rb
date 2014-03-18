@@ -4,7 +4,8 @@ class Customer < ActiveRecord::Base
 	default_scope -> { order('company ASC') }
 
 	has_many :projects, dependent: :destroy
-
+    
+    #Export to CSV file
 	def self.to_csv(options={})
 		CSV.generate(options) do |csv|
 			csv << column_names
@@ -14,6 +15,7 @@ class Customer < ActiveRecord::Base
 		end
 	end
 
+	#Import CSV
 	def self.import(file)
   		CSV.foreach(file.path, headers: true) do |row|
     		Customer.create! row.to_hash

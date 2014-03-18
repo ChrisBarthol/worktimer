@@ -1,7 +1,5 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-
-
 <%= f.fields_for :tasks do |builder| %>
 <div class = "taskfields">
 	<span class="span2 project">
@@ -26,8 +24,9 @@
 		<%= builder.label :description, "Task Description" %>
 		<%= builder.text_field :description %>
 	</span>
-	</div>
-	<div class="border"></div>
+</div>
+
+<div class="border"></div>
 <% end %>
 
 

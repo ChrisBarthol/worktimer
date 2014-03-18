@@ -4,6 +4,8 @@
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", date: @date.next_month %>
   </h2>
+
+  <!--Fill in the calendar with tasks-->
   <%= calendar @date do |date| %>
     <%= date.day %>
     <% if @taskdates_by_date[date] %>
@@ -11,9 +13,12 @@
         <% @taskdates_by_date[date].each do |taskdate| %>
           <li><%= link_to taskdate.thedate, taskdate %></li>
         <% end %>
+
+        <!--This doesn't work, trying to add a link to add task on that date-->
         <% if @taskdates_by_date[date].blank? %>
         <li><%= link_to new_taskdate_path %></li>
         <% end %>
+        <!--...-->
       </ul>
     <% end %>
   <% end %>

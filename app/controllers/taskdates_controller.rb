@@ -19,7 +19,7 @@ class TaskdatesController < ApplicationController
   	@task = Taskdate.new(task_params)
     @task.user_id = current_user.id
     for tasks in @task.tasks
-      @project = Project.where(id: tasks.project_id)
+      @project = Project.where(id: tasks.project_id) #fill @task with project_name, customer_id, user_id, and customer name from the project_id
       tasks.project_name = @project.first.name
       tasks.customer_id = @project.first.customer_id
       @customer = Customer.where(id: tasks.customer_id)
@@ -37,10 +37,10 @@ class TaskdatesController < ApplicationController
 
   def index
   	@taskdates = Taskdate.where(user_id: current_user.id)
-    @taskdates_by_date = @taskdates.group_by(&:thedate)
+    @taskdates_by_date = @taskdates.group_by(&:thedate)  #tasks for calender
     @date = params[:thedate] ? Date.parse(params[:date]) : Date.today
-    @tasks = Task.where(user_id: current_user.id)
-  end
+    @tasks = Task.where(user_id: current_user.id)   #tasks for list
+  end 
 
   def report
     @day = Task.where(dtstart: Date.Today)

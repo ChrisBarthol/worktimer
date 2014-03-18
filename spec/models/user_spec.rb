@@ -125,28 +125,4 @@ describe User do
       expect(@user.reload.email).to eq mixed_case_email.downcase
     end
   end
-
-  describe "micropost associations" do
-
-    before { @user.save }
-    let!(:older_task) do
-      FactoryGirl.create(:task, dtstart: 1.day.ago, user: @user)
-    end
-    let!(:newer_task) do
-      FactoryGirl.create(:task, dtstart: 1.hour.ago, user: @user)
-    end
-
-    it "should have the right tasks in the right order" do
-      expect(@user.tasks.to_a).to eq [newer_task, older_task]
-    end
-
-    it "should destroy associated tasks" do
-      tasks = @user.tasks.to_a
-      @user.destroy
-      expect(tasks).not_to be_empty
-      tasks.each do |task|
-        expect(Task.where(id: task.id)).to be_empty
-      end
-    end
-  end
 end

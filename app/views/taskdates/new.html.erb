@@ -1,4 +1,4 @@
-
+<% provide(:title, 'New Task') %>
 <h3><%= @date %></h3>
 
 
@@ -13,6 +13,7 @@
     <% end %>
   </div>
   <div class="span2 pull-left">
+  	<!--                                       STOPWATCH 1                          -->
   	<span class="span4 timer">
     	<b>Task 1 Timer:</b>
 		<script src="stopwatch.js" type="text/javascript"></script> 
@@ -27,6 +28,7 @@
 	</span>
 	<div class="clearfix visible-xs"></div>
 
+	<!--                                       STOPWATCH 2                         -->
 	<span class="span4 timer">
     	<b>Task 2 Timer:</b>
 		<script src="stopwatch.js" type="text/javascript"></script> 
@@ -41,6 +43,7 @@
 	</span>
 	<div class="clearfix visible-xs"></div>
 
+	<!--                                       STOPWATCH 3                          -->
 	<span class="span4 timer">
     	<b>Task 3 Timer:</b>
 		<script src="stopwatch.js" type="text/javascript"></script> 
@@ -51,8 +54,6 @@
 				document.getElementById('watchdisplay3').innerHTML = watch.toString() + "." + parseInt(watch.getElapsed().milliseconds/100);
 			}
 			var x = new Stopwatch(updatedisplay, 50);
-
-			var z = x+w+y
 		// ]]&gt;</script>
 	</span>
 	<div class="clearfix visible-xs"></div>

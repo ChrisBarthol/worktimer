@@ -2,7 +2,8 @@ module CalendarHelper
   def calendar(date = Date.today, &block)
     Calendar.new(self, date, block).table
   end
-
+  
+  #This basically sets the calendar table output
   class Calendar < Struct.new(:view, :date, :callback)
     HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :sunday

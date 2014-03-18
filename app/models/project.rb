@@ -4,6 +4,4 @@ class Project < ActiveRecord::Base
 	default_scope -> { order('created_at DESC') }
 	validates :customer_id, presence: true
 	validates :name, presence: true
-
-	
 end

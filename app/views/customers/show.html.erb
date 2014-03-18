@@ -21,7 +21,6 @@
 <p>Fax1: <em><%= @customer.fax1 %></em></p>
 <p>Fax2: <em><%= @customer.fax2 %></em></p>
 <p>Email: <em><%= @customer.email %></em></p>
-<p>Webiste: 
-	<% if @customer.website.present? %><%= link_to @customer.website %><% end %></p>
+<p>Webiste: <% if @customer.website.present? %><%= link_to @customer.website %><% end %></p>
 
-	<li><%= link_to "Update Customer", edit_customer_path(@customer) %></li>
+<li><%= link_to "Update Customer", edit_customer_path(@customer) %></li>
